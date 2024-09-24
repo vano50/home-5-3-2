@@ -6,6 +6,8 @@ private:
     T** data;
     int rows;
     int cols;
+    Table(const Table&) = delete;
+    Table& operator=(const Table&) = delete;
 public:
     Table(int rows, int cols) : rows{ rows }, cols{ cols } {
 
@@ -34,8 +36,8 @@ public:
         return data[row][col];
     }
 
-    void size() {
-        std::cout << rows << "X" << cols;
+    int size() {
+        return  rows * cols;
     }
 
 };
@@ -45,7 +47,7 @@ int main() {
 
     table.at(0, 0) = 4;
     std::cout << table.at(0, 0) << std::endl;
-    table.size();
+    std::cout << table.size();
 
     return 0;
 }
